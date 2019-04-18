@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+                name="loginActivity"
+                type="com.namget.logintest.ui.login.LoginActivity"/>
+
+        <variable
+                name="loginViewModel"
+                type="com.namget.logintest.ui.login.LoginViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputId"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_margin="16dp"
+                android:layout_width="0dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:errorEnabled="true"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:onTextChanged="@{loginViewModel::onIdTextChanged}"
+                    android:singleLine="true"
+                    android:hint="ID를 입력하세요"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPassword"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputId"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_margin="16dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="textPassword"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:onTextChanged="@{loginViewModel::onPasswordTextChange}"
+                    android:hint="PW를 입력하세요"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+                android:text="로그인"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputPassword"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:layout_width="0dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
