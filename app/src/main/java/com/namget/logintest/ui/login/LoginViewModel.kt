@@ -12,6 +12,20 @@ class LoginViewModel(val mApplication: Application) : BaseApplicationViewModel(m
     private val _passwordText = MutableLiveData<String>()
     val passwordText: LiveData<String> get() = _passwordText
 
+//    val mediatorTest: MediatorLiveData<String> = MediatorLiveData()
+//
+//    init{
+//        mediatorTest.addSource(idText){
+//            mediatorTest.value = mixIdAndPassword()
+//        }
+//
+//        mediatorTest.addSource(passwordText, {
+//            mediatorTest.value = mixIdAndPassword()
+//        })
+//    }
+//
+//    fun mixIdAndPassword() = idText.value + passwordText.value
+
 
     //제목 textwatcher
     fun onIdTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
