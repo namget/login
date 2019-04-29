@@ -1,9 +1,11 @@
 package com.namget.logintest.ui.login
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.namget.logintest.ui.base.BaseApplicationViewModel
+import com.namget.logintest.util.Event
 
 class LoginViewModel(val mApplication: Application) : BaseApplicationViewModel(mApplication) {
 
@@ -12,19 +14,8 @@ class LoginViewModel(val mApplication: Application) : BaseApplicationViewModel(m
     private val _passwordText = MutableLiveData<String>()
     val passwordText: LiveData<String> get() = _passwordText
 
-//    val mediatorTest: MediatorLiveData<String> = MediatorLiveData()
-//
-//    init{
-//        mediatorTest.addSource(idText){
-//            mediatorTest.value = mixIdAndPassword()
-//        }
-//
-//        mediatorTest.addSource(passwordText, {
-//            mediatorTest.value = mixIdAndPassword()
-//        })
-//    }
-//
-//    fun mixIdAndPassword() = idText.value + passwordText.value
+    private val _event = MutableLiveData<Event<String>>()
+    val event: LiveData<Event<String>> get() = _event
 
 
     //제목 textwatcher
@@ -34,6 +25,10 @@ class LoginViewModel(val mApplication: Application) : BaseApplicationViewModel(m
 
     fun onPasswordTextChange(s: CharSequence, start: Int, before: Int, count: Int) {
         _passwordText.value = s.toString()
+    }
+
+    fun loginButtonClick(view: View) {
+        _event.value = Event("Search")
     }
 
 

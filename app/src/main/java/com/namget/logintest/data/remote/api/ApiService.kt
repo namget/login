@@ -1,12 +1,14 @@
 package com.namget.diaryLee.data.remote.api
 
+import com.namget.logintest.data.model.UserDataList
+import io.reactivex.Single
+import retrofit2.http.GET
+import retrofit2.http.Query
+
 interface ApiService {
 
     //sample
-//    @GET("common.do/")
-//    fun getLottoNum(@Query("method") method: String, @Query("drwNo") drwNo: Int?): Observable<LottoData>
-
-//    @GET("qr.do/")
-//    fun getManualNum(@Query("method") method: String, @Query("v") v: String?): Void
+    @GET("search/users")
+    fun getUserList(@Query("q") searchName: String): Single<UserDataList>
 
 }

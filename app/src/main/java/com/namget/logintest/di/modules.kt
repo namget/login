@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.namget.diaryLee.data.remote.api.ApiService
 import com.namget.logintest.BuildConfig
 import com.namget.logintest.ui.login.LoginViewModelFactory
+import com.namget.logintest.ui.search.SearchViewModel
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -30,7 +31,7 @@ val apiModule: Module = module {
             addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             addConverterFactory(GsonConverterFactory.create(gson))
             client(client)
-            baseUrl("")
+            baseUrl("https://api.github.com/")
         }.build().create(ApiService::class.java)
     }
 }
@@ -39,6 +40,11 @@ val viewModelModule = module {
     factory {
         LoginViewModelFactory(get())
     }
+
+    factory {
+        SearchViewModel()
+    }
+
 }
 
 
