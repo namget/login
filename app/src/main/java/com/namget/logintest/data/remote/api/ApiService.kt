@@ -9,6 +9,6 @@ interface ApiService {
 
     //sample
     @GET("search/users")
-    fun getUserList(@Query("q") searchName: String): Single<UserDataList>
+    fun getUserList(@Query("q") searchName: String, @Query("page") page : Int): Single<UserDataList>
 
 }

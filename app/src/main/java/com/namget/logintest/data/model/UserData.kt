@@ -8,5 +8,8 @@ data class UserData(
     @SerializedName("html_url")
     val repoUrl: String,
     @SerializedName("score")
-    val repoScore: Double
+    val repoScore: Double,
+    @SerializedName("avatar_url")
+    val profileImage: String
+
 )

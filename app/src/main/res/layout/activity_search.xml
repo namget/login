@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable name="viewmodel" type="com.namget.logintest.ui.search.SearchViewModel"/>
 
     </data>
 
@@ -15,11 +16,13 @@
                 android:id="@+id/edtGithub"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:onTextChanged="@{viewmodel::onNameChanged}"
+                android:singleLine="true"
+                android:inputType="text"
                 app:layout_constraintRight_toLeftOf="@id/searchGithub"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_margin="8dp"
-                android:singleLine="true"
                 app:layout_constraintRight_toRightOf="parent"
         />
 
@@ -29,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_search_black_24dp"
                 app:layout_constraintTop_toTopOf="@id/edtGithub"
+                android:onClick="@{viewmodel::searchClick}"
                 android:layout_margin="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/edtGithub"
                 app:layout_constraintRight_toRightOf="parent"
@@ -36,6 +40,7 @@
         />
 
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintLeft_toLeftOf="parent"

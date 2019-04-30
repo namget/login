@@ -1,6 +1,5 @@
 package com.namget.logintest.data.model
 
-import android.service.autofill.UserData
 import com.google.gson.annotations.SerializedName
 
 data class UserDataList(

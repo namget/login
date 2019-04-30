@@ -27,7 +27,9 @@ ext{
     androidXVersion = "1.0.0"
     androidXAppCompatVersion = "1.0.2"
     retrofitVersion = "2.4.0"
-    rxAndroidVersion = '2.0.2'
+    rxAndroidVersion = '2.1.0'
+    rxKotlinVersion = '2.3.2'
+    rxJavaVersion = '2.2.2'
     constraintVersion = "2.0.0-alpha3"
     multidexVersion = "2.0.1"
     rxKotlinVersion = '2.2.0'
@@ -36,16 +38,12 @@ ext{
     searchViewVersion = "1.4.0"
     tedPermissionVersion = "2.2.0"
     kaptCompilerVersion = "3.1.2"
-    zxingVersion = "3.6.0"
-    zxingCoreVersion = "3.3.0"
     jsoupVersion = "1.11.3"
     httpVersion = "3.8.0"
     koinVersion = '1.0.1'
     lifecycleVersion = '2.0.0'
     coroutineVersion = "1.1.0"
     roomVersion = "2.1.0-alpha03"
-    rxBindingVersion = '2.0.0'
-    naverVersion = '4.2.5'
 }
 
 task clean(type: Delete) {
