@@ -10,11 +10,25 @@ fun ImageView.setImageWithGlide(url: String) =
     url.let {
         try {
             Glide.with(context)
-                .load(url)
+                .load(it)
                 .apply(RequestOptions()
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .error(R.mipmap.ic_launcher_round)
+                )
+                .into(this)
+        } catch (e : Exception){}
+    }
+
+
+fun ImageView.setImageWithGlide(resId: Int) =
+    resId.let {
+        try {
+            Glide.with(context)
+                .load(it)
+                .apply(RequestOptions()
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                 )
                 .into(this)
         } catch (e : Exception){}

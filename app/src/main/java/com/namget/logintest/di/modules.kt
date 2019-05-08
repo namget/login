@@ -7,6 +7,7 @@ import com.namget.logintest.data.repository.NetworkRepositoryImpl
 import com.namget.logintest.data.repository.Repository
 import com.namget.logintest.ui.login.LoginViewModelFactory
 import com.namget.logintest.ui.search.SearchViewModelFactory
+import com.namget.logintest.util.Logger
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -56,8 +57,15 @@ val viewModelModule = module {
     }
 
     factory {
-        SearchViewModelFactory(get())
+        SearchViewModelFactory(get(), get())
     }
 }
 
-val appModules = listOf(apiModule, viewModelModule)
+val loggerModule = module {
+    single {
+        Logger()
+    }
+}
+
+
+val appModules = listOf(apiModule, viewModelModule, loggerModule)

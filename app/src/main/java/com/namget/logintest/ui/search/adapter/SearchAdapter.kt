@@ -14,7 +14,7 @@ class SearchAdapter(var dataList: ArrayList<UserData>) : LifecycleRecyclerAdapte
 
 
     inner class SearchViewHolder(val item: ItemSearchUserBinding) : LifecycleViewHolder(item.root) {
-        fun setViewmodel(searchItemViewModel: SearchItemViewModel) {
+        fun setViewModel(searchItemViewModel: SearchItemViewModel) {
             item.viewmodel = searchItemViewModel
         }
     }
@@ -26,10 +26,11 @@ class SearchAdapter(var dataList: ArrayList<UserData>) : LifecycleRecyclerAdapte
     fun addItem(list: ArrayList<UserData>) {
         val before = dataList.size
         this.dataList.addAll(list)
-        notifyItemRangeChanged(dataList.size, list.size)
+        notifyItemRangeChanged(before, list.size)
     }
 
     fun setItem(list: ArrayList<UserData>) {
+        clear()
         this.dataList = list
         notifyDataSetChanged()
     }
@@ -43,6 +44,6 @@ class SearchAdapter(var dataList: ArrayList<UserData>) : LifecycleRecyclerAdapte
     override fun getItemCount() = dataList.size
     override fun onBindViewHolder(holder: LifecycleViewHolder, position: Int) {
         val searchItemViewModel = SearchItemViewModel(dataList[position])
-        (holder as SearchViewHolder).setViewmodel(searchItemViewModel)
+        (holder as SearchViewHolder).setViewModel(searchItemViewModel)
     }
 }

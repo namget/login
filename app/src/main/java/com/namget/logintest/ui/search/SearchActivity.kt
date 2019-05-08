@@ -27,12 +27,17 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
         binding.recyclerView.apply {
             this.layoutManager = LinearLayoutManager(this@SearchActivity)
             this.adapter = searchAdapter
+
             this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    //최상단
                     if (!recyclerView.canScrollVertically(-1)) {
-                    } else if (!recyclerView.canScrollVertically(1)) {
-//                        searchViewModel.searchUserName()
+                    }
+                    //최하단
+                    else if (!recyclerView.canScrollVertically(1)) {
+                        if (recyclerView.adapter?.itemCount != 0)
+                            searchViewModel.loadMore()
                     } else {
                     }
                 }
@@ -52,7 +57,11 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
         binding.lifecycleOwner = this
         searchViewModel.userDataList.observe(this, Observer {
             if (!(searchViewModel.isEndPage.value ?: true)) {
-                searchAdapter.addItem(it.UserList)
+                if (searchAdapter.itemCount == 0) {
+                    searchAdapter.setItem(it.UserList)
+                } else {
+                    searchAdapter.addItem(it.UserList)
+                }
             }
         })
 

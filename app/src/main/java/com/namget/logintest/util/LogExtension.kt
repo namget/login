@@ -4,14 +4,15 @@ import android.util.Log
 import com.namget.logintest.BuildConfig
 
 
-fun Activity.loge(message : String) = {
+fun Activity.e(message : String) = {
     if(BuildConfig.DEBUG){
         Log.e(this::class.java.simpleName,message)
     }
 }
 
 
-fun Activity.logd(message : String){
+
+fun Activity.d(message : String){
     if(BuildConfig.DEBUG){
         Log.d(this::class.java.simpleName,message)
     }
